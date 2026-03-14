@@ -1,0 +1,21 @@
+<svg width="160" height="100" viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background transparent -->
+  <!-- Dress icon centered in maroon circle -->
+  <circle cx="80" cy="34" r="28" fill="#3D0C11"/>
+  <!-- Hanger -->
+  <path d="M80 18 Q80 15 83 15 Q86 15 86 18 Q86 20 80 22" fill="none" stroke="#C8922A" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Dress body -->
+  <path d="M73 23 Q80 21 87 23 L90 31 Q86 30 80 30 Q74 30 70 31 Z" fill="#C8922A"/>
+  <!-- Skirt -->
+  <path d="M70 31 Q74 30 80 30 Q86 30 90 31 L94 50 Q87 48 80 48 Q73 48 66 50 Z" fill="#C8922A"/>
+  <!-- Dress details -->
+  <line x1="80" y1="30" x2="80" y2="48" stroke="#3D0C11" stroke-width="0.8" opacity="0.4"/>
+  <path d="M74 39 Q80 37 86 39" fill="none" stroke="#3D0C11" stroke-width="0.7" opacity="0.4"/>
+  <polygon points="80,33 83,36 80,39 77,36" fill="#3D0C11" opacity="0.35"/>
+  <!-- Gold divider line -->
+  <line x1="50" y1="68" x2="110" y2="68" stroke="#C8922A" stroke-width="0.8"/>
+  <!-- Brand name -->
+  <text x="80" y="83" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#3D0C11" letter-spacing="2" text-anchor="middle">yeloqa</text>
+  <!-- Tagline -->
+  <text x="80" y="96" font-family="Arial, sans-serif" font-size="8" fill="#C8922A" letter-spacing="3" text-anchor="middle">ETHNIC WEAR</text>
+</svg>
