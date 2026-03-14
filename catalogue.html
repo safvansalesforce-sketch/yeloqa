@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Catalogue | Yeloqa Ethnic Wear</title>
+<meta name="description" content="Browse Yeloqa's full collection of handpicked cotton kurtas, salwar sets, churidhar sets and gift hampers. Order via WhatsApp. Pan-India shipping."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --maroon: #3D0C11;
+  --maroon-deep: #260008;
+  --gold: #C8922A;
+  --gold-light: #E8B84B;
+  --cream: #FAF5EE;
+  --cream-dark: #F0E8D8;
+  --text: #1A0005;
+  --text-light: #7A5C4F;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 4rem;
+  background: rgba(250,245,238,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,146,42,0.2);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--maroon);
+}
+.nav-center {
+  font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--text-light);
+}
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.nav-back {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-light); text-decoration: none; transition: color 0.2s;
+}
+.nav-back:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--maroon); color: var(--gold-light);
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.55rem 1.4rem; text-decoration: none; transition: background 0.3s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--maroon-deep); }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--maroon); }
+.nav-mobile {
+  display: none; position: fixed; top: 62px; left: 0; right: 0;
+  background: rgba(250,245,238,0.98); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,146,42,0.2);
+  flex-direction: column; padding: 1.2rem 2rem; gap: 1rem; z-index: 99;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-light); text-decoration: none; padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(200,146,42,0.1);
+}
+.nav-mobile a:last-child { color: var(--gold); border-bottom: none; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  margin-top: 62px;
+  padding: 4rem 6rem 3rem;
+  background: var(--maroon-deep);
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg, rgba(200,146,42,0.04) 0, rgba(200,146,42,0.04) 1px,
+    transparent 0, transparent 24px
+  );
+}
+.page-header-inner { position: relative; z-index: 1; }
+.page-header-tag {
+  font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(200,146,42,0.6); margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.page-header-tag::before { content:''; width:20px; height:1px; background:var(--gold); opacity:0.5; }
+.page-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 300; color: var(--cream); line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+.page-header h1 em { font-style: italic; color: var(--gold-light); }
+.page-header-desc {
+  font-size: 0.9rem; color: rgba(250,245,238,0.45); max-width: 480px; line-height: 1.8;
+}
+.header-stats {
+  display: flex; gap: 3rem; margin-top: 2.5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(200,146,42,0.15);
+}
+.hstat { }
+.hstat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; color: var(--gold-light); display: block; line-height: 1;
+}
+.hstat-label {
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(232,184,75,0.45); margin-top: 0.25rem; display: block;
+}
+
+/* ── LAYOUT ── */
+.catalogue-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  min-height: 80vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: #fff;
+  border-right: 1px solid rgba(200,146,42,0.15);
+  padding: 2.5rem 1.8rem;
+  position: sticky; top: 62px;
+  height: calc(100vh - 62px);
+  overflow-y: auto;
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(200,146,42,0.2); border-radius: 2px; }
+
+.filter-section { margin-bottom: 2.5rem; }
+.filter-title {
+  font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.filter-title::after { content:''; flex:1; height:1px; background:rgba(200,146,42,0.2); }
+
+.search-box {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(200,146,42,0.25);
+  background: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem; color: var(--text);
+  outline: none; transition: border-color 0.2s;
+  margin-bottom: 0.5rem;
+}
+.search-box::placeholder { color: var(--text-light); opacity: 0.6; }
+.search-box:focus { border-color: var(--gold); }
+
+.cat-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 0.7rem 0.9rem;
+  background: transparent; border: 1px solid transparent;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.06em;
+  color: var(--text-light); cursor: pointer; text-align: left;
+  transition: all 0.2s; margin-bottom: 4px;
+}
+.cat-btn:hover { color: var(--maroon); border-color: rgba(200,146,42,0.2); }
+.cat-btn.active {
+  background: var(--maroon); color: var(--gold-light);
+  border-color: var(--maroon);
+}
+.cat-btn .cat-count {
+  font-size: 0.68rem; opacity: 0.6;
+  background: rgba(200,146,42,0.15); padding: 1px 6px; border-radius: 20px;
+}
+.cat-btn.active .cat-count { background: rgba(232,184,75,0.2); opacity: 1; }
+
+.price-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; }
+.price-input {
+  flex: 1; padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(200,146,42,0.25); background: var(--cream);
+  font-family: 'Jost', sans-serif; font-size: 0.78rem; color: var(--text);
+  outline: none; transition: border-color 0.2s;
+}
+.price-input:focus { border-color: var(--gold); }
+.price-sep { font-size: 0.72rem; color: var(--text-light); flex-shrink: 0; }
+
+.price-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.5rem; }
+.price-preset {
+  font-size: 0.68rem; letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem; border: 1px solid rgba(200,146,42,0.25);
+  background: transparent; color: var(--text-light); cursor: pointer;
+  transition: all 0.2s; font-family: 'Jost', sans-serif;
+}
+.price-preset:hover, .price-preset.active { background: var(--cream-dark); color: var(--maroon); border-color: var(--gold); }
+
+.sort-select {
+  width: 100%; padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(200,146,42,0.25); background: var(--cream);
+  font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--text);
+  outline: none; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23C8922A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.8rem center;
+  transition: border-color 0.2s;
+}
+.sort-select:focus { border-color: var(--gold); }
+
+.filter-reset {
+  width: 100%; padding: 0.65rem;
+  background: transparent; border: 1px solid rgba(200,146,42,0.25);
+  font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-light); cursor: pointer;
+  transition: all 0.2s; margin-top: 1rem;
+}
+.filter-reset:hover { border-color: var(--maroon); color: var(--maroon); }
+
+/* ── MAIN CONTENT ── */
+.catalogue-main { padding: 2.5rem 3rem; background: var(--cream); }
+
+/* ── ACTIVE FILTERS BAR ── */
+.active-filters {
+  display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+  margin-bottom: 1.8rem; min-height: 32px;
+}
+.filter-chip {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--maroon); background: rgba(200,146,42,0.1);
+  border: 1px solid rgba(200,146,42,0.3); padding: 0.25rem 0.7rem;
+}
+.filter-chip-remove {
+  background: none; border: none; cursor: pointer;
+  color: var(--gold); font-size: 0.9rem; line-height: 1; padding: 0;
+  margin-left: 2px;
+}
+.results-count {
+  margin-left: auto; font-size: 0.75rem; letter-spacing: 0.1em;
+  color: var(--text-light);
+}
+
+/* ── CATEGORY TABS (top) ── */
+.cat-tabs {
+  display: flex; gap: 0; border-bottom: 1px solid rgba(200,146,42,0.2);
+  margin-bottom: 2.5rem; overflow-x: auto;
+}
+.cat-tab {
+  padding: 0.8rem 1.6rem;
+  background: transparent; border: none; border-bottom: 2px solid transparent;
+  font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--text-light); cursor: pointer;
+  white-space: nowrap; transition: all 0.2s; margin-bottom: -1px;
+}
+.cat-tab:hover { color: var(--maroon); }
+.cat-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── PRODUCT GRID ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid rgba(200,146,42,0.12);
+  overflow: hidden; cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  animation: fadeUp 0.4s ease both;
+}
+.product-card:hover {
+  border-color: rgba(200,146,42,0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(61,12,17,0.08);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.product-img {
+  width: 100%; aspect-ratio: 3/4; overflow: hidden;
+  background: var(--cream-dark); position: relative;
+}
+.product-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s;
+}
+.product-card:hover .product-img img { transform: scale(1.06); }
+
+.badge {
+  position: absolute; top: 0.8rem; left: 0.8rem;
+  font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem; font-family: 'Jost', sans-serif; font-weight: 500;
+}
+.badge-new { background: var(--gold); color: var(--maroon-deep); }
+.badge-best { background: var(--maroon); color: var(--gold-light); }
+.badge-festive { background: #8B4513; color: #FAF5EE; }
+.badge-gift { background: #2D5016; color: #FAF5EE; }
+
+.product-wishlist {
+  position: absolute; top: 0.7rem; right: 0.7rem;
+  width: 32px; height: 32px; background: rgba(250,245,238,0.9);
+  border: 1px solid rgba(200,146,42,0.2); border-radius: 0;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 0.9rem;
+  opacity: 0; transition: opacity 0.2s;
+}
+.product-card:hover .product-wishlist { opacity: 1; }
+
+.product-info { padding: 1rem 1.2rem 1.3rem; }
+.product-cat {
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.3rem;
+}
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; color: var(--maroon-deep); margin-bottom: 0.3rem; line-height: 1.3;
+}
+.product-desc { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.8rem; line-height: 1.5; }
+.product-meta {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.9rem;
+}
+.product-tag {
+  font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-light); background: var(--cream-dark);
+  padding: 0.2rem 0.55rem; border: 1px solid rgba(200,146,42,0.12);
+}
+.product-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 0.8rem; border-top: 1px solid rgba(200,146,42,0.1);
+}
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; color: var(--maroon); font-weight: 600;
+}
+.product-price-note { font-size: 0.65rem; color: var(--text-light); display: block; }
+.btn-order {
+  background: var(--maroon); color: var(--gold-light);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.5rem 1rem; text-decoration: none; display: inline-block;
+  transition: all 0.2s;
+}
+.btn-order:hover { background: var(--gold); color: var(--maroon-deep); }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center; padding: 5rem 2rem;
+}
+.empty-state-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.empty-state h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: var(--maroon-deep); margin-bottom: 0.6rem;
+}
+.empty-state p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+/* ── CATALOGUE CTA BANNER ── */
+.cta-banner {
+  margin: 3rem 0 0;
+  background: var(--maroon);
+  padding: 2.5rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg, rgba(200,146,42,0.05) 0, rgba(200,146,42,0.05) 1px,
+    transparent 0, transparent 20px
+  );
+}
+.cta-banner-text { position: relative; z-index: 1; }
+.cta-banner-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; color: var(--cream); font-weight: 300;
+  margin-bottom: 0.4rem;
+}
+.cta-banner-text h3 em { font-style: italic; color: var(--gold-light); }
+.cta-banner-text p { font-size: 0.85rem; color: rgba(250,245,238,0.5); }
+.cta-banner-btns { display: flex; gap: 1rem; position: relative; z-index: 1; flex-wrap: wrap; }
+.btn-wa {
+  background: #25D366; color: #fff;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.85rem 2rem; text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-wa:hover { background: #1ebe5d; }
+.btn-outline-cream {
+  background: transparent; color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border: 1px solid rgba(250,245,238,0.25);
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-outline-cream:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--maroon-deep);
+  padding: 2.5rem 6rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(200,146,42,0.15);
+}
+.footer-copy { font-size: 0.72rem; letter-spacing: 0.1em; color: rgba(250,245,238,0.3); }
+.footer-social { display: flex; gap: 1.5rem; }
+.footer-social a {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(250,245,238,0.4); text-decoration: none; transition: color 0.3s;
+}
+.footer-social a:hover { color: var(--gold); }
+
+/* ── MOBILE FILTER TOGGLE ── */
+.mobile-filter-bar {
+  display: none;
+  padding: 0.8rem 1.5rem;
+  background: #fff; border-bottom: 1px solid rgba(200,146,42,0.15);
+  gap: 0.8rem; align-items: center;
+}
+.mobile-filter-btn {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--cream-dark); border: 1px solid rgba(200,146,42,0.2);
+  font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-light); padding: 0.5rem 1rem;
+  cursor: pointer; transition: all 0.2s;
+}
+.mobile-filter-btn.active { background: var(--maroon); color: var(--gold-light); border-color: var(--maroon); }
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 150;
+}
+.sidebar-overlay.open { display: block; }
+.sidebar.mobile-open {
+  position: fixed; top: 0; left: 0; bottom: 0; z-index: 160;
+  height: 100vh; width: 280px; box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-center { display: none; }
+  .nav-back { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+  .page-header { padding: 3rem 2rem 2.5rem; }
+  .header-stats { gap: 2rem; }
+  .catalogue-layout { grid-template-columns: 1fr; }
+  .sidebar {
+    display: none; position: static; height: auto;
+  }
+  .sidebar.mobile-open { display: block; }
+  .mobile-filter-bar { display: flex; }
+  .catalogue-main { padding: 1.5rem; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  .cta-banner { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 540px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .cat-tabs { gap: 0; }
+  .cat-tab { padding: 0.7rem 1rem; font-size: 0.68rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="80" cy="60" r="38" fill="#3D0C11"/>
+      <path d="M80 36 Q80 32 84 32 Q88 32 88 36 Q88 39 80 42" fill="none" stroke="#C8922A" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M71 44 Q80 41 89 44 L93 55 Q87 53 80 53 Q73 53 67 55 Z" fill="#C8922A"/>
+      <path d="M67 55 Q73 53 80 53 Q87 53 93 55 L98 82 Q89 80 80 80 Q71 80 62 82 Z" fill="#C8922A"/>
+      <line x1="80" y1="53" x2="80" y2="80" stroke="#3D0C11" stroke-width="1" opacity="0.4"/>
+      <polygon points="80,58 84,63 80,68 76,63" fill="#3D0C11" opacity="0.3"/>
+    </svg>
+    yeloqa
+  </a>
+  <span class="nav-center">Our Collection</span>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← Back to Home</a>
+    <a href="https://wa.me/917593930044?text=Hi%2C%20I%27d%20like%20to%20browse%20the%20full%20catalogue" target="_blank" class="nav-cta">Order on WhatsApp</a>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="mobileNav">
+  <a href="index.html" onclick="toggleMenu()">← Home</a>
+  <a href="#" onclick="filterCategory('all');toggleMenu()">All Products</a>
+  <a href="#" onclick="filterCategory('kurta');toggleMenu()">Kurta Collections</a>
+  <a href="#" onclick="filterCategory('salwar');toggleMenu()">Salwar Sets</a>
+  <a href="#" onclick="filterCategory('churidhar');toggleMenu()">Churidhar Sets</a>
+  <a href="#" onclick="filterCategory('gift');toggleMenu()">Gift Hampers</a>
+  <a href="https://wa.me/917593930044" target="_blank" onclick="toggleMenu()">Order on WhatsApp ↗</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-header-tag">Our Collection</p>
+    <h1>The Full <em>Catalogue</em></h1>
+    <p class="page-header-desc">Handpicked 100% pure cotton ethnic wear sourced from Rajasthan, Delhi & Mumbai. New pieces added every season.</p>
+    <div class="header-stats">
+      <div class="hstat">
+        <span class="hstat-num">50+</span>
+        <span class="hstat-label">Styles</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">100%</span>
+        <span class="hstat-label">Pure Cotton</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">S–XXL</span>
+        <span class="hstat-label">All Sizes</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">3–7</span>
+        <span class="hstat-label">Days Delivery</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE FILTER BAR -->
+<div class="mobile-filter-bar">
+  <button class="mobile-filter-btn" id="mobileFilterBtn" onclick="toggleSidebar()">⚙ Filters</button>
+  <select class="sort-select" style="flex:1;max-width:200px" onchange="sortProducts(this.value)">
+    <option value="default">Sort: Default</option>
+    <option value="price-asc">Price: Low to High</option>
+    <option value="price-desc">Price: High to Low</option>
+    <option value="name-asc">Name: A–Z</option>
+  </select>
+</div>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<!-- MAIN LAYOUT -->
+<div class="catalogue-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="filter-section">
+      <div class="filter-title">Search</div>
+      <input type="text" class="search-box" placeholder="Search styles…" id="searchInput" oninput="applyFilters()"/>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Category</div>
+      <button class="cat-btn active" data-cat="all" onclick="filterCategory('all')">
+        All Products <span class="cat-count" id="count-all">20</span>
+      </button>
+      <button class="cat-btn" data-cat="kurta" onclick="filterCategory('kurta')">
+        Kurta Collections <span class="cat-count" id="count-kurta">7</span>
+      </button>
+      <button class="cat-btn" data-cat="salwar" onclick="filterCategory('salwar')">
+        Salwar Sets <span class="cat-count" id="count-salwar">5</span>
+      </button>
+      <button class="cat-btn" data-cat="churidhar" onclick="filterCategory('churidhar')">
+        Churidhar Sets <span class="cat-count" id="count-churidhar">5</span>
+      </button>
+      <button class="cat-btn" data-cat="gift" onclick="filterCategory('gift')">
+        Gift Hampers <span class="cat-count" id="count-gift">3</span>
+      </button>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Price Range</div>
+      <div class="price-row">
+        <input type="number" class="price-input" id="priceMin" placeholder="₹ Min" min="0" oninput="applyFilters()"/>
+        <span class="price-sep">–</span>
+        <input type="number" class="price-input" id="priceMax" placeholder="₹ Max" min="0" oninput="applyFilters()"/>
+      </div>
+      <div class="price-presets">
+        <button class="price-preset" onclick="setPriceRange(0,799)">Under ₹799</button>
+        <button class="price-preset" onclick="setPriceRange(799,1199)">₹799–1199</button>
+        <button class="price-preset" onclick="setPriceRange(1199,1999)">₹1199–1999</button>
+        <button class="price-preset" onclick="setPriceRange(1999,9999)">₹1999+</button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Sort By</div>
+      <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+        <option value="default">Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="name-asc">Name: A–Z</option>
+      </select>
+    </div>
+
+    <button class="filter-reset" onclick="resetFilters()">Clear All Filters</button>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="catalogue-main">
+
+    <!-- ACTIVE FILTERS -->
+    <div class="active-filters" id="activeFilters">
+      <span class="results-count" id="resultsCount">20 products</span>
+    </div>
+
+    <!-- CATEGORY TABS -->
+    <div class="cat-tabs">
+      <button class="cat-tab active" data-cat="all" onclick="filterCategory('all')">All</button>
+      <button class="cat-tab" data-cat="kurta" onclick="filterCategory('kurta')">Kurtas</button>
+      <button class="cat-tab" data-cat="salwar" onclick="filterCategory('salwar')">Salwar Sets</button>
+      <button class="cat-tab" data-cat="churidhar" onclick="filterCategory('churidhar')">Churidhar Sets</button>
+      <button class="cat-tab" data-cat="gift" onclick="filterCategory('gift')">Gift Hampers</button>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid" id="productGrid"></div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-banner-text">
+        <h3>Can't find what you're <em>looking for?</em></h3>
+        <p>We get new stock every week. Chat with us on WhatsApp for custom requests, bulk orders, or to check availability.</p>
+      </div>
+      <div class="cta-banner-btns">
+        <a href="https://wa.me/917593930044?text=Hi%2C%20I%20need%20help%20finding%20a%20specific%20style" target="_blank" class="btn-wa">Chat on WhatsApp</a>
+        <a href="https://www.instagram.com/yeloqa_clothing" target="_blank" class="btn-outline-cream">View Instagram</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);text-decoration:none;letter-spacing:0.1em;">yeloqa</a>
+  <div class="footer-copy">© 2026 Yeloqa Clothing · Manjeri, Kerala</div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/yeloqa_clothing" target="_blank">Instagram</a>
+    <a href="https://wa.me/917593930044" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+// ── PRODUCT DATA ──
+const products = [
+  // KURTAS
+  { id:1, cat:'kurta', name:'Rajasthani Block Print Kurta', desc:'Hand-block printed cotton with traditional motifs', tags:['Casual','Daily Wear'], price:899, priceLabel:'₹799 – ₹999', badge:'new', img:'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&q=80&auto=format&fit=crop' },
+  { id:2, cat:'kurta', name:'Floral Embroidered Kurta', desc:'Delicate floral threadwork on breathable cotton', tags:['Festive','Office'], price:1299, priceLabel:'₹1,199 – ₹1,399', badge:'best', img:'https://images.unsplash.com/photo-1617551307578-fd2b4f8af9bf?w=600&q=80&auto=format&fit=crop' },
+  { id:3, cat:'kurta', name:'Indigo Striped Kurta', desc:'Handwoven indigo stripes, relaxed silhouette', tags:['Casual','Daily Wear'], price:749, priceLabel:'₹699 – ₹799', badge:'', img:'https://images.unsplash.com/photo-1594938298603-c8148c4b4a2a?w=600&q=80&auto=format&fit=crop' },
+  { id:4, cat:'kurta', name:'Mirror Work Festive Kurta', desc:'Rajasthani mirror embellishments on premium cotton', tags:['Festive','Wedding'], price:1599, priceLabel:'₹1,499 – ₹1,699', badge:'festive', img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80&auto=format&fit=crop' },
+  { id:5, cat:'kurta', name:'Lucknow Chikankari Kurta', desc:'Fine chikankari embroidery on soft white cotton', tags:['Office','Elegant'], price:1199, priceLabel:'₹1,099 – ₹1,299', badge:'best', img:'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=80&auto=format&fit=crop' },
+  { id:6, cat:'kurta', name:'Jaipuri Printed Short Kurta', desc:'Vibrant jaipuri prints, knee-length relaxed fit', tags:['Casual','Daily Wear'], price:699, priceLabel:'₹649 – ₹749', badge:'new', img:'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&q=80&auto=format&fit=crop' },
+  { id:7, cat:'kurta', name:'Angrakha Style Kurta', desc:'Traditional angrakha silhouette in solid cotton', tags:['Festive','Traditional'], price:1099, priceLabel:'₹999 – ₹1,199', badge:'', img:'https://images.unsplash.com/photo-1537832816519-689ad163238b?w=600&q=80&auto=format&fit=crop' },
+
+  // SALWAR SETS
+  { id:8, cat:'salwar', name:'Classic Cotton Salwar Set', desc:'Full 3-piece set with dupatta. Everyday comfort', tags:['Daily Wear','Classic'], price:1199, priceLabel:'₹1,099 – ₹1,299', badge:'best', img:'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&q=80&auto=format&fit=crop&crop=top' },
+  { id:9, cat:'salwar', name:'Patiala Salwar Set', desc:'Voluminous patiala cut with embroidered kurta', tags:['Festive','Traditional'], price:1399, priceLabel:'₹1,299 – ₹1,499', badge:'', img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80&auto=format&fit=crop&crop=bottom' },
+  { id:10, cat:'salwar', name:'Straight Cut Salwar Set', desc:'Crisp straight-cut bottom, great for office wear', tags:['Office','Formal'], price:1099, priceLabel:'₹999 – ₹1,199', badge:'new', img:'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=80&auto=format&fit=crop&crop=top' },
+  { id:11, cat:'salwar', name:'Palazzo Salwar Set', desc:'Wide-leg palazzo with printed kurta, breezy feel', tags:['Casual','Summer'], price:1299, priceLabel:'₹1,199 – ₹1,399', badge:'', img:'https://images.unsplash.com/photo-1617551307578-fd2b4f8af9bf?w=600&q=80&auto=format&fit=crop&crop=bottom' },
+  { id:12, cat:'salwar', name:'Embroidered Festive Salwar Set', desc:'Heavily embellished set for celebrations & weddings', tags:['Festive','Wedding'], price:1799, priceLabel:'₹1,699 – ₹1,899', badge:'festive', img:'https://images.unsplash.com/photo-1537832816519-689ad163238b?w=600&q=80&auto=format&fit=crop&crop=center' },
+
+  // CHURIDHAR SETS
+  { id:13, cat:'churidhar', name:'Elegant Churidhar Set', desc:'Traditional churidhar cut, timeless everyday wear', tags:['Daily Wear','Traditional'], price:1299, priceLabel:'₹1,199 – ₹1,399', badge:'', img:'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&q=80&auto=format&fit=crop&crop=top' },
+  { id:14, cat:'churidhar', name:'Anarkali Churidhar Set', desc:'Floor-length anarkali with fitted churidhar', tags:['Festive','Occasion'], price:1699, priceLabel:'₹1,599 – ₹1,799', badge:'best', img:'https://images.unsplash.com/photo-1594938298603-c8148c4b4a2a?w=600&q=80&auto=format&fit=crop&crop=top' },
+  { id:15, cat:'churidhar', name:'Printed Georgette Churidhar', desc:'Lightweight printed top with cotton churidhar', tags:['Office','Smart'], price:1099, priceLabel:'₹999 – ₹1,199', badge:'new', img:'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&q=80&auto=format&fit=crop&crop=bottom' },
+  { id:16, cat:'churidhar', name:'Straight Yoke Churidhar', desc:'Structured yoke with embroidered neckline detail', tags:['Office','Formal'], price:1199, priceLabel:'₹1,099 – ₹1,299', badge:'', img:'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&q=80&auto=format&fit=crop&crop=bottom' },
+  { id:17, cat:'churidhar', name:'Wedding Churidhar Set', desc:'Rich embroidery, full set with heavy dupatta', tags:['Wedding','Festive'], price:2299, priceLabel:'₹2,199 – ₹2,399', badge:'festive', img:'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&q=80&auto=format&fit=crop&crop=top' },
+
+  // GIFT HAMPERS
+  { id:18, cat:'gift', name:'Festival Gift Hamper', desc:'2 kurtas + 1 salwar set beautifully packed in a gift box', tags:['Gift','Festive'], price:2499, priceLabel:'₹2,299 – ₹2,699', badge:'gift', img:'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80&auto=format&fit=crop' },
+  { id:19, cat:'gift', name:'Corporate Gift Set', desc:'3 premium kurtas with personalised packaging', tags:['Corporate','Bulk'], price:3499, priceLabel:'₹3,299 – ₹3,699', badge:'gift', img:'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&q=80&auto=format&fit=crop' },
+  { id:20, cat:'gift', name:'Mini Starter Pack', desc:'1 kurta + 1 churidhar set, perfect introductory gift', tags:['Gift','Starter'], price:1799, priceLabel:'₹1,699 – ₹1,899', badge:'new', img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format&fit=crop' },
+];
+
+let currentCat = 'all';
+let currentMin = 0;
+let currentMax = Infinity;
+let currentSort = 'default';
+let currentSearch = '';
+
+function getWAText(product) {
+  return encodeURIComponent(`Hi, I'm interested in the ${product.name} (${product.priceLabel}). Please share more details.`);
+}
+
+function badgeHTML(badge) {
+  if (!badge) return '';
+  const map = { new:'badge-new', best:'badge-best', festive:'badge-festive', gift:'badge-gift' };
+  const label = { new:'New', best:'Bestseller', festive:'Festive', gift:'Gift' };
+  return `<span class="badge ${map[badge]}">${label[badge]}</span>`;
+}
+
+function renderProducts(list) {
+  const grid = document.getElementById('productGrid');
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="empty-state">
+      <div class="empty-state-icon">🧵</div>
+      <h3>No products found</h3>
+      <p>Try adjusting your filters, or <a href="https://wa.me/917593930044" target="_blank" style="color:var(--gold)">chat with us on WhatsApp</a> for help finding the right style.</p>
+    </div>`;
+    document.getElementById('resultsCount').textContent = '0 products';
+    return;
+  }
+  document.getElementById('resultsCount').textContent = `${list.length} product${list.length !== 1 ? 's' : ''}`;
+  grid.innerHTML = list.map((p, i) => `
+    <div class="product-card" style="animation-delay:${i * 0.05}s">
+      <div class="product-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        ${badgeHTML(p.badge)}
+        <button class="product-wishlist" title="Save">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">${p.cat === 'kurta' ? 'Kurta Collection' : p.cat === 'salwar' ? 'Salwar Set' : p.cat === 'churidhar' ? 'Churidhar Set' : 'Gift Hamper'}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-meta">${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}</div>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">${p.priceLabel}</div>
+            <span class="product-price-note">incl. shipping · S–XXL</span>
+          </div>
+          <a href="https://wa.me/917593930044?text=${getWAText(p)}" target="_blank" class="btn-order">Order</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function applyFilters() {
+  currentSearch = document.getElementById('searchInput').value.toLowerCase().trim();
+  const minVal = document.getElementById('priceMin').value;
+  const maxVal = document.getElementById('priceMax').value;
+  currentMin = minVal ? parseInt(minVal) : 0;
+  currentMax = maxVal ? parseInt(maxVal) : Infinity;
+  currentSort = document.getElementById('sortSelect').value;
+
+  let filtered = products.filter(p => {
+    const catMatch = currentCat === 'all' || p.cat === currentCat;
+    const priceMatch = p.price >= currentMin && p.price <= currentMax;
+    const searchMatch = !currentSearch || p.name.toLowerCase().includes(currentSearch) || p.desc.toLowerCase().includes(currentSearch) || p.tags.some(t => t.toLowerCase().includes(currentSearch));
+    return catMatch && priceMatch && searchMatch;
+  });
+
+  if (currentSort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (currentSort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (currentSort === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+  renderProducts(filtered);
+  updateActiveFilters();
+}
+
+function filterCategory(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  applyFilters();
+}
+
+function setPriceRange(min, max) {
+  document.getElementById('priceMin').value = min || '';
+  document.getElementById('priceMax').value = max >= 9999 ? '' : max;
+  document.querySelectorAll('.price-preset').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  applyFilters();
+}
+
+function sortProducts(val) {
+  document.getElementById('sortSelect').value = val;
+  applyFilters();
+}
+
+function resetFilters() {
+  currentCat = 'all';
+  currentMin = 0;
+  currentMax = Infinity;
+  currentSearch = '';
+  currentSort = 'default';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('priceMin').value = '';
+  document.getElementById('priceMax').value = '';
+  document.getElementById('sortSelect').value = 'default';
+  document.querySelectorAll('.price-preset').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+  document.querySelectorAll('.cat-tab').forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+  renderProducts(products);
+  updateActiveFilters();
+}
+
+function updateActiveFilters() {
+  const container = document.getElementById('activeFilters');
+  let chips = '';
+  if (currentCat !== 'all') {
+    const labels = { kurta:'Kurtas', salwar:'Salwar Sets', churidhar:'Churidhar Sets', gift:'Gift Hampers' };
+    chips += `<span class="filter-chip">${labels[currentCat]} <button class="filter-chip-remove" onclick="filterCategory('all')">×</button></span>`;
+  }
+  if (currentMin > 0 || currentMax < Infinity) {
+    const maxDisp = currentMax >= 9999 ? '∞' : '₹'+currentMax;
+    chips += `<span class="filter-chip">₹${currentMin} – ${maxDisp} <button class="filter-chip-remove" onclick="clearPrice()">×</button></span>`;
+  }
+  if (currentSearch) {
+    chips += `<span class="filter-chip">"${currentSearch}" <button class="filter-chip-remove" onclick="clearSearch()">×</button></span>`;
+  }
+  const count = document.getElementById('resultsCount').textContent;
+  container.innerHTML = chips + `<span class="results-count">${count}</span>`;
+
+  // Update counts in sidebar
+  const cats = ['all','kurta','salwar','churidhar','gift'];
+  cats.forEach(cat => {
+    const el = document.getElementById('count-'+cat);
+    if (el) {
+      const n = products.filter(p => (cat === 'all' || p.cat === cat) && p.price >= currentMin && p.price <= currentMax && (!currentSearch || p.name.toLowerCase().includes(currentSearch))).length;
+      el.textContent = n;
+    }
+  });
+}
+
+function clearPrice() {
+  document.getElementById('priceMin').value = '';
+  document.getElementById('priceMax').value = '';
+  document.querySelectorAll('.price-preset').forEach(b => b.classList.remove('active'));
+  currentMin = 0; currentMax = Infinity;
+  applyFilters();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  currentSearch = '';
+  applyFilters();
+}
+
+function toggleMenu() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+function toggleSidebar() {
+  const s = document.getElementById('sidebar');
+  const o = document.getElementById('sidebarOverlay');
+  const b = document.getElementById('mobileFilterBtn');
+  s.classList.toggle('mobile-open');
+  o.classList.toggle('open');
+  b.classList.toggle('active');
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('mobileNav').classList.remove('open');
+});
+
+// Init
+renderProducts(products);
+</script>
+</body>
+</html>
