@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yeloqa | Ethnic Wear</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --maroon: #3D0C11;
+    --maroon-deep: #260008;
+    --gold: #C8922A;
+    --gold-light: #E8B84B;
+    --cream: #FAF5EE;
+    --cream-dark: #F0E8D8;
+    --text: #1A0005;
+    --text-light: #7A5C4F;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250,245,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,146,42,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600; letter-spacing: 0.12em;
+    color: var(--maroon); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-light); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--maroon); color: var(--gold-light);
+    font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 0.65rem 1.6rem; border: none; cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--maroon-deep); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    background: var(--cream);
+    position: relative;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; right: -1px; top: 10%; bottom: 10%;
+    width: 1px; background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+  .hero-tag {
+    font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before {
+    content: ''; display: inline-block;
+    width: 30px; height: 1px; background: var(--gold);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--maroon-deep);
+    margin-bottom: 1.8rem;
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+  .hero-desc {
+    font-size: 0.95rem; line-height: 1.9; color: var(--text-light);
+    max-width: 420px; margin-bottom: 3rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--maroon); color: var(--gold-light);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 1rem 2.2rem; border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--maroon-deep); }
+  .btn-outline {
+    background: transparent; color: var(--maroon);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 1rem 2.2rem; border: 1px solid var(--maroon);
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { background: var(--maroon); color: var(--gold-light); }
+
+  .hero-right {
+    background: var(--maroon-deep);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(200,146,42,0.04) 0, rgba(200,146,42,0.04) 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+  .hero-visual {
+    position: relative; z-index: 2;
+    text-align: center; padding: 3rem;
+  }
+  .hero-badge {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,146,42,0.3);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
+  .hero-badge::before {
+    content: '';
+    position: absolute; inset: 8px;
+    border-radius: 50%; border: 1px solid rgba(200,146,42,0.15);
+  }
+  .hero-badge-icon { font-size: 3.5rem; margin-bottom: 0.5rem; }
+  .hero-badge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--gold-light);
+    letter-spacing: 0.1em;
+  }
+  .hero-badge-sub {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(232,184,75,0.5); margin-top: 0.3rem;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; justify-content: center;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600;
+    color: var(--gold-light); display: block;
+  }
+  .stat-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(232,184,75,0.5);
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--gold); overflow: hidden;
+    padding: 0.9rem 0;
+  }
+  .marquee-track {
+    display: flex; gap: 3rem; width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--maroon-deep); white-space: nowrap;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .marquee-item::after { content: '✦'; opacity: 0.5; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 6rem; }
+  .section-tag {
+    font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300; color: var(--maroon-deep);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── COLLECTIONS ── */
+  .collections { background: var(--cream); }
+  .collections-header { max-width: 500px; margin-bottom: 4rem; }
+  .collections-header p { color: var(--text-light); line-height: 1.8; margin-top: 1rem; }
+  .collections-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+  }
+  .collection-card {
+    background: var(--maroon-deep);
+    aspect-ratio: 3/4;
+    position: relative; overflow: hidden; cursor: pointer;
+  }
+  .collection-card:first-child { grid-row: span 2; aspect-ratio: auto; }
+  .card-bg {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      135deg, rgba(200,146,42,0.06) 0, rgba(200,146,42,0.06) 1px,
+      transparent 0, transparent 30px
+    );
+    transition: opacity 0.4s;
+  }
+  .collection-card:hover .card-bg { opacity: 0; }
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(38,0,8,0.9) 0%, transparent 60%);
+  }
+  .card-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2rem;
+  }
+  .card-emoji { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--cream); font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+  .card-sub { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+  .card-accent {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 40px; height: 40px; border: 1px solid rgba(200,146,42,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; letter-spacing: 0.1em; color: var(--gold);
+    text-transform: uppercase; writing-mode: vertical-rl;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .collection-card:hover .card-accent { opacity: 1; }
+
+  /* ── WHY ── */
+  .why { background: var(--maroon-deep); }
+  .why .section-tag { color: var(--gold-light); }
+  .why .section-tag::before { background: var(--gold-light); }
+  .why h2 { color: var(--cream); }
+  .why h2 em { color: var(--gold-light); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    margin-top: 4rem;
+  }
+  .why-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(200,146,42,0.15);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .why-card:hover {
+    border-color: rgba(200,146,42,0.5);
+    background: rgba(200,146,42,0.05);
+  }
+  .why-icon { font-size: 2rem; margin-bottom: 1.5rem; display: block; }
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--cream); margin-bottom: 0.8rem;
+  }
+  .why-desc { font-size: 0.85rem; color: rgba(250,245,238,0.45); line-height: 1.8; }
+
+  /* ── PROCESS ── */
+  .process { background: var(--cream-dark); }
+  .process-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .process-steps { margin-top: 2.5rem; }
+  .step {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding: 1.5rem 0; border-bottom: 1px solid rgba(200,146,42,0.15);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: rgba(200,146,42,0.25);
+    line-height: 1; min-width: 2.5rem;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; color: var(--maroon-deep); margin-bottom: 0.3rem;
+  }
+  .step-desc { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+  .process-visual {
+    background: var(--maroon);
+    padding: 4rem 3rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .process-visual::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, rgba(200,146,42,0.05) 0, rgba(200,146,42,0.05) 1px,
+      transparent 0, transparent 40px
+    );
+  }
+  .process-quote {
+    position: relative; z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-style: italic;
+    color: var(--cream); line-height: 1.5; margin-bottom: 2rem;
+  }
+  .process-quote span { color: var(--gold-light); }
+  .process-origin {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(232,184,75,0.5);
+  }
+  .origin-tags { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+  .origin-tag {
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(200,146,42,0.3);
+    padding: 0.4rem 1rem;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--cream); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+  .testi-card {
+    padding: 2.5rem;
+    border: 1px solid rgba(200,146,42,0.2);
+    position: relative;
+    transition: border-color 0.3s;
+  }
+  .testi-card:hover { border-color: var(--gold); }
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; line-height: 0.5;
+    color: rgba(200,146,42,0.2); margin-bottom: 1rem;
+  }
+  .testi-text { font-size: 0.9rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1.5rem; }
+  .testi-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--maroon);
+  }
+  .testi-loc { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); }
+  .stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 1rem; }
+
+  /* ── VISIT / CTA ── */
+  .visit {
+    background: var(--maroon);
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .visit-left { padding: 6rem; position: relative; }
+  .visit-left::after {
+    content: ''; position: absolute; right: 0; top: 15%; bottom: 15%;
+    width: 1px; background: linear-gradient(to bottom, transparent, rgba(200,146,42,0.3), transparent);
+  }
+  .visit .section-tag { color: var(--gold-light); }
+  .visit .section-tag::before { background: var(--gold-light); }
+  .visit h2 { color: var(--cream); }
+  .visit h2 em { color: var(--gold-light); }
+  .visit-desc { color: rgba(250,245,238,0.55); line-height: 1.9; margin: 1.5rem 0 2.5rem; font-size: 0.95rem; }
+  .visit-details { margin-bottom: 3rem; }
+  .visit-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
+  .visit-detail-icon { font-size: 1.1rem; margin-top: 0.1rem; }
+  .visit-detail-text { font-size: 0.88rem; color: rgba(250,245,238,0.6); line-height: 1.6; }
+  .visit-detail-text strong { color: var(--gold-light); font-weight: 400; display: block; }
+  .visit-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold); color: var(--maroon-deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 1rem 2.2rem; border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline-cream {
+    background: transparent; color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 1rem 2.2rem; border: 1px solid rgba(250,245,238,0.3);
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-outline-cream:hover { border-color: var(--gold); color: var(--gold); }
+  .visit-right {
+    background: var(--maroon-deep);
+    display: flex; align-items: center; justify-content: center;
+    padding: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .visit-right::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, rgba(200,146,42,0.03) 0, rgba(200,146,42,0.03) 1px,
+      transparent 0, transparent 20px
+    );
+  }
+  .visit-map-placeholder {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 380px;
+    border: 1px solid rgba(200,146,42,0.2);
+    padding: 3rem 2.5rem; text-align: center;
+  }
+  .map-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .map-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .map-address { font-size: 0.85rem; color: rgba(250,245,238,0.45); line-height: 1.7; margin-bottom: 1.5rem; }
+  .map-link {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border-bottom: 1px solid rgba(200,146,42,0.3); padding-bottom: 2px;
+    transition: border-color 0.3s;
+  }
+  .map-link:hover { border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--maroon-deep);
+    padding: 3rem 6rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(200,146,42,0.15);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600; letter-spacing: 0.12em;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy { font-size: 0.72rem; letter-spacing: 0.12em; color: rgba(250,245,238,0.3); }
+  .footer-social { display: flex; gap: 1.5rem; }
+  .footer-social a {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(250,245,238,0.4); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-social a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.2s; }
+  .hero-desc { animation-delay: 0.35s; }
+  .hero-btns { animation-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    .hero-left { padding: 4rem 2rem; }
+    section { padding: 4rem 2rem; }
+    .collections-grid { grid-template-columns: 1fr 1fr; }
+    .collection-card:first-child { grid-row: span 1; aspect-ratio: 3/4; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .process-inner { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .visit { grid-template-columns: 1fr; }
+    .visit-left { padding: 4rem 2rem; }
+    .visit-right { min-height: 300px; padding: 3rem 2rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" style="display:flex;align-items:center;">
+    <svg width="80" height="50" viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="80" cy="34" r="28" fill="#3D0C11"/>
+      <path d="M80 18 Q80 15 83 15 Q86 15 86 18 Q86 20 80 22" fill="none" stroke="#C8922A" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M73 23 Q80 21 87 23 L90 31 Q86 30 80 30 Q74 30 70 31 Z" fill="#C8922A"/>
+      <path d="M70 31 Q74 30 80 30 Q86 30 90 31 L94 50 Q87 48 80 48 Q73 48 66 50 Z" fill="#C8922A"/>
+      <line x1="80" y1="30" x2="80" y2="48" stroke="#3D0C11" stroke-width="0.8" opacity="0.4"/>
+      <polygon points="80,33 83,36 80,39 77,36" fill="#3D0C11" opacity="0.35"/>
+      <line x1="50" y1="68" x2="110" y2="68" stroke="#C8922A" stroke-width="0.8"/>
+      <text x="80" y="83" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#3D0C11" letter-spacing="2" text-anchor="middle">yeloqa</text>
+      <text x="80" y="96" font-family="Arial,sans-serif" font-size="8" fill="#C8922A" letter-spacing="3" text-anchor="middle">ETHNIC WEAR</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#visit">Visit Us</a></li>
+  </ul>
+  <a href="https://wa.me/917593930044" target="_blank" class="nav-cta">Order on WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <p class="hero-tag">Ethnic Wear · Manjeri</p>
+    <h1>Draping Stories<br>of <em>Grace</em> &<br>Tradition</h1>
+    <p class="hero-desc">Handpicked cotton fabrics from Rajasthan, Delhi & Mumbai — crafted into kurtas, salwars & churidhars that feel like home.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/917593930044" target="_blank" class="btn-primary">Shop via WhatsApp</a>
+      <a href="https://www.instagram.com/yeloqa_clothing" target="_blank" class="btn-outline">View Instagram</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-visual">
+      <div class="hero-badge" style="background:transparent;border:none;">
+        <svg width="140" height="88" viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="80" cy="34" r="28" fill="#C8922A" opacity="0.15"/>
+          <circle cx="80" cy="34" r="28" fill="none" stroke="#C8922A" stroke-width="1" opacity="0.5"/>
+          <path d="M80 18 Q80 15 83 15 Q86 15 86 18 Q86 20 80 22" fill="none" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M73 23 Q80 21 87 23 L90 31 Q86 30 80 30 Q74 30 70 31 Z" fill="#E8B84B"/>
+          <path d="M70 31 Q74 30 80 30 Q86 30 90 31 L94 50 Q87 48 80 48 Q73 48 66 50 Z" fill="#E8B84B"/>
+          <line x1="80" y1="30" x2="80" y2="48" stroke="#3D0C11" stroke-width="0.8" opacity="0.4"/>
+          <polygon points="80,33 83,36 80,39 77,36" fill="#3D0C11" opacity="0.35"/>
+          <line x1="50" y1="68" x2="110" y2="68" stroke="#C8922A" stroke-width="0.8"/>
+          <text x="80" y="83" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#E8B84B" letter-spacing="2" text-anchor="middle">yeloqa</text>
+          <text x="80" y="96" font-family="Arial,sans-serif" font-size="8" fill="#C8922A" letter-spacing="3" text-anchor="middle">ETHNIC WEAR</text>
+        </svg>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">39K+</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Cotton</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">PAN</span>
+          <span class="stat-label">India Ship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Pure Cotton Fabrics</span>
+    <span class="marquee-item">Handpicked from Rajasthan</span>
+    <span class="marquee-item">Kurtas & Salwars</span>
+    <span class="marquee-item">Shipping Across India</span>
+    <span class="marquee-item">Churidhar Sets</span>
+    <span class="marquee-item">Manjeri Store</span>
+    <span class="marquee-item">Ethnic Wear</span>
+    <span class="marquee-item">Pure Cotton Fabrics</span>
+    <span class="marquee-item">Handpicked from Rajasthan</span>
+    <span class="marquee-item">Kurtas & Salwars</span>
+    <span class="marquee-item">Shipping Across India</span>
+    <span class="marquee-item">Churidhar Sets</span>
+    <span class="marquee-item">Manjeri Store</span>
+    <span class="marquee-item">Ethnic Wear</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="collections-header">
+    <p class="section-tag">What We Offer</p>
+    <h2>Timeless <em>Pieces</em> for Every Occasion</h2>
+    <p>From casual daily wear to festive celebrations — our cotton collection keeps you elegant and comfortable all day long.</p>
+  </div>
+  <div class="collections-grid">
+    <div class="collection-card">
+      <div class="card-bg"></div>
+      <div class="card-overlay"></div>
+      <div class="card-accent">New</div>
+      <div class="card-content">
+        <span class="card-emoji">👘</span>
+        <div class="card-title">Kurta Collections</div>
+        <div class="card-sub">Casual · Festive · Office</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="card-bg"></div>
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span class="card-emoji">🧵</span>
+        <div class="card-title">Salwar Sets</div>
+        <div class="card-sub">Classic · Comfortable</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="card-bg"></div>
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span class="card-emoji">✨</span>
+        <div class="card-title">Churidhar Sets</div>
+        <div class="card-sub">Elegant · Traditional</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="card-bg"></div>
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span class="card-emoji">🎁</span>
+        <div class="card-title">Gift Hampers</div>
+        <div class="card-sub">Festive · Corporate</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="card-bg"></div>
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span class="card-emoji">🌸</span>
+        <div class="card-title">New Arrivals</div>
+        <div class="card-sub">Fresh Every Season</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <p class="section-tag">Why Yeloqa</p>
+  <h2>Crafted with <em>Intention</em>,<br>Worn with Pride</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">🏔️</span>
+      <div class="why-title">Sourced from the North</div>
+      <p class="why-desc">Every piece is personally handpicked from the textile heartlands of Rajasthan, Delhi & Mumbai.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🌿</span>
+      <div class="why-title">100% Pure Cotton</div>
+      <p class="why-desc">Breathable, skin-friendly cotton that suits India's climate — comfortable from morning to night.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🚚</span>
+      <div class="why-title">Pan-India Shipping</div>
+      <p class="why-desc">Order from anywhere in India and get your Yeloqa pieces delivered right to your doorstep.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">💛</span>
+      <div class="why-title">Beloved by Thousands</div>
+      <p class="why-desc">A growing community of 39,000+ women who trust Yeloqa for their everyday ethnic wardrobe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS / STORY -->
+<section class="process" id="story">
+  <div class="process-inner">
+    <div>
+      <p class="section-tag">Our Process</p>
+      <h2>From Weavers to <em>Your Wardrobe</em></h2>
+      <div class="process-steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div>
+            <div class="step-title">Sourcing the Best</div>
+            <p class="step-desc">We travel to Rajasthan, Delhi & Mumbai to handpick fabrics and finished pieces from trusted weavers and artisans.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div>
+            <div class="step-title">Quality Curation</div>
+            <p class="step-desc">Each piece is checked for fabric quality, finish, and fit before making it to our collection.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div>
+            <div class="step-title">In-Store & Online</div>
+            <p class="step-desc">Browse and buy at our Manjeri store or shop conveniently via WhatsApp and Instagram.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div>
+            <div class="step-title">Delivered with Love</div>
+            <p class="step-desc">Carefully packed and shipped across India so you receive your ethnic wear in perfect condition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="process-visual">
+      <div class="process-quote">
+        "Clothing that <span>carries the soul</span> of Indian craftsmanship"
+      </div>
+      <p class="process-origin">Sourced from</p>
+      <div class="origin-tags">
+        <span class="origin-tag">Rajasthan</span>
+        <span class="origin-tag">Delhi</span>
+        <span class="origin-tag">Mumbai</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-tag">Beloved Customers</p>
+  <h2>What Our <em>Community</em> Says</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">The cotton quality is exceptional — so soft and breathable. I ordered online and the delivery was super quick. Will definitely order again!</p>
+      <div class="testi-name">Fathima R.</div>
+      <div class="testi-loc">Kozhikode</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Found Yeloqa on Instagram and visited the Manjeri store — the collection is so well curated. Love the Rajasthani prints, very unique.</p>
+      <div class="testi-name">Sreelakshmi M.</div>
+      <div class="testi-loc">Manjeri</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Ordered a churidhar set via WhatsApp — the process was so smooth and the outfit looked exactly like the photos. Very happy!</p>
+      <div class="testi-name">Anitha K.</div>
+      <div class="testi-loc">Chennai</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / CTA -->
+<section class="visit" id="visit" style="padding:0">
+  <div class="visit-left">
+    <p class="section-tag">Find Us</p>
+    <h2>Visit Our <em>Store</em><br>or Order Online</h2>
+    <p class="visit-desc">Come experience the fabrics in person at our Manjeri store, or browse and order from the comfort of your home via WhatsApp.</p>
+    <div class="visit-details">
+      <div class="visit-detail">
+        <span class="visit-detail-icon">📍</span>
+        <div class="visit-detail-text">
+          <strong>Store Location</strong>
+          Yeloqa Clothing, Manjeri<br>Malappuram, Kerala
+        </div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-icon">🕙</span>
+        <div class="visit-detail-text">
+          <strong>Store Timings</strong>
+          Open All Days · 10:00 AM – 10:30 PM
+        </div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-icon">📞</span>
+        <div class="visit-detail-text">
+          <strong>Call / WhatsApp</strong>
+          +91 75939 30044
+        </div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-icon">📦</span>
+        <div class="visit-detail-text">
+          <strong>Shipping</strong>
+          Pan-India delivery available
+        </div>
+      </div>
+      <div class="visit-detail">
+        <span class="visit-detail-icon">📸</span>
+        <div class="visit-detail-text">
+          <strong>Instagram</strong>
+          @yeloqa_clothing
+        </div>
+      </div>
+    </div>
+    <div class="visit-btns">
+      <a href="https://wa.me/917593930044" target="_blank" class="btn-gold">Chat on WhatsApp</a>
+      <a href="https://www.instagram.com/yeloqa_clothing" target="_blank" class="btn-outline-cream">Follow on Instagram</a>
+    </div>
+  </div>
+  <div class="visit-right">
+    <div class="visit-map-placeholder" style="padding:0;overflow:hidden;border:1px solid rgba(200,146,42,0.2);">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.0!2d76.1218012!3d11.1111804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba637007d87a651%3A0xe4328e89cc4230c1!2sYeloqa!5e0!3m2!1sen!2sin!4v1"
+        width="100%" height="320" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div style="padding:1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream);">Yeloqa Store</div>
+          <div style="font-size:0.75rem;color:rgba(250,245,238,0.45);margin-top:0.2rem;">Manjeri, Malappuram, Kerala</div>
+        </div>
+        <a href="https://maps.app.goo.gl/wXA7rxeswMQaDUwy6" target="_blank" class="map-link">Directions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="80" height="50" viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="80" cy="34" r="28" fill="#C8922A" opacity="0.15"/>
+      <circle cx="80" cy="34" r="28" fill="none" stroke="#C8922A" stroke-width="0.8" opacity="0.4"/>
+      <path d="M80 18 Q80 15 83 15 Q86 15 86 18 Q86 20 80 22" fill="none" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M73 23 Q80 21 87 23 L90 31 Q86 30 80 30 Q74 30 70 31 Z" fill="#E8B84B"/>
+      <path d="M70 31 Q74 30 80 30 Q86 30 90 31 L94 50 Q87 48 80 48 Q73 48 66 50 Z" fill="#E8B84B"/>
+      <line x1="80" y1="30" x2="80" y2="48" stroke="#3D0C11" stroke-width="0.8" opacity="0.4"/>
+      <polygon points="80,33 83,36 80,39 77,36" fill="#3D0C11" opacity="0.35"/>
+      <line x1="50" y1="68" x2="110" y2="68" stroke="#C8922A" stroke-width="0.8"/>
+      <text x="80" y="83" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#E8B84B" letter-spacing="2" text-anchor="middle">yeloqa</text>
+      <text x="80" y="96" font-family="Arial,sans-serif" font-size="8" fill="#C8922A" letter-spacing="3" text-anchor="middle">ETHNIC WEAR</text>
+    </svg>
+  </div>
+  <div class="footer-copy">© 2026 Yeloqa Clothing · Manjeri, Kerala</div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/yeloqa_clothing" target="_blank">Instagram</a>
+    <a href="https://wa.me/917593930044" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+</body>
+</html>
